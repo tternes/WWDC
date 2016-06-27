@@ -22,6 +22,7 @@ class PreferencesWindowController: NSWindowController {
         populateFontsPopup()
         
         downloadsFolderLabel.stringValue = prefs.localVideoStoragePath
+        databaseFolderPath.stringValue = prefs.databasePath ?? ""
         
         automaticRefreshEnabledCheckbox.state = prefs.automaticRefreshEnabled ? NSOnState : NSOffState
         
@@ -59,7 +60,7 @@ class PreferencesWindowController: NSWindowController {
         }
     }
     
-    @IBAction func revealInFinder(sender: NSButton) {
+    @IBAction func revealDownloadsInFinder(sender: NSButton) {
         let path = Preferences.SharedPreferences().localVideoStoragePath
         let root = (path as NSString).stringByDeletingLastPathComponent
 
@@ -72,6 +73,53 @@ class PreferencesWindowController: NSWindowController {
         }
 
         NSWorkspace.sharedWorkspace().selectFile(path, inFileViewerRootedAtPath: root)
+    }
+    
+    // MARK: Database Path
+    
+    @IBOutlet weak var databaseFolderPath: NSTextField!
+    
+    @IBAction func revealDatabaseInFinder(sender: NSButton) {
+        guard let path = Preferences.SharedPreferences().databasePath else {
+            return
+        }
+        
+        let root = (path as NSString).stringByDeletingLastPathComponent
+        
+        let fileManager = NSFileManager.defaultManager()
+        if !fileManager.fileExistsAtPath(path) {
+            do {
+                try fileManager.createDirectoryAtPath(path, withIntermediateDirectories: false, attributes: nil)
+            } catch _ {
+            }
+        }
+        
+        NSWorkspace.sharedWorkspace().selectFile(path, inFileViewerRootedAtPath: root)
+    }
+    
+    @IBAction func changeDatabaseFolder(sender: NSButton) {
+        let path: String = {
+            guard let path = Preferences.SharedPreferences().databasePath else {
+                return NSHomeDirectory()
+            }
+            
+            return path
+        }()
+        
+        let panel = NSOpenPanel()
+        panel.directoryURL = NSURL(fileURLWithPath: path)
+        panel.canChooseDirectories = true
+        panel.canChooseFiles = false
+        panel.canCreateDirectories = true
+        panel.prompt = "Choose"
+        panel.beginSheetModalForWindow(window!) { result in
+            if result > 0 {
+                if let path = panel.URL?.path {
+                    Preferences.SharedPreferences().databasePath = path
+                    self.databaseFolderPath.stringValue = path
+                }
+            }
+        }
     }
     
     // MARK: Session refresh

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController" customModule="WWDC" customModuleProvider="target">
             <connections>
                 <outlet property="automaticRefreshEnabledCheckbox" destination="dNy-TJ-Tq9" id="JGq-Va-gu9"/>
                 <outlet property="bgColorWell" destination="aCW-n2-0qr" id="1gE-fU-6Pi"/>
+                <outlet property="databaseFolderPath" destination="CX7-K3-doJ" id="ZmB-vR-v1a"/>
                 <outlet property="downloadsFolderLabel" destination="iYN-Yq-tAu" id="4dY-Z5-jRe"/>
                 <outlet property="fontPopUp" destination="v7F-yu-I4e" id="oxg-Gb-l21"/>
                 <outlet property="reindexTranscriptsButton" destination="yGj-4p-Qs8" id="ZZr-Fm-wiW"/>
@@ -21,14 +22,14 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="Prefs Window" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <rect key="contentRect" x="196" y="240" width="480" height="332"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="387"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="332"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="387"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rBt-da-KnE">
-                        <rect key="frame" x="18" y="295" width="166" height="17"/>
+                        <rect key="frame" x="18" y="350" width="166" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Downloaded videos folder:" id="X1P-de-lXQ">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -36,7 +37,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iYN-Yq-tAu">
-                        <rect key="frame" x="188" y="296" width="274" height="14"/>
+                        <rect key="frame" x="188" y="351" width="274" height="14"/>
                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="/Users/johndoe/Library/Application Support/WWDC" id="DzB-Gv-XkK">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -44,7 +45,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0fF-2B-C09">
-                        <rect key="frame" x="188" y="231" width="257" height="28"/>
+                        <rect key="frame" x="188" y="286" width="257" height="28"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="IMPORTANT: Create a folder just for the videos, don't use an existing folder" id="WCV-5W-tgW">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -52,17 +53,17 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ADy-Xn-vCs">
-                        <rect key="frame" x="184" y="260" width="136" height="32"/>
+                        <rect key="frame" x="184" y="315" width="136" height="32"/>
                         <buttonCell key="cell" type="push" title="Reveal in Finder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ItQ-hs-aPY">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="revealInFinder:" target="-2" id="O0D-fC-Bf5"/>
+                            <action selector="revealDownloadsInFinder:" target="-2" id="ViN-W7-3Xc"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pcR-R1-B9x">
-                        <rect key="frame" x="320" y="260" width="99" height="32"/>
+                        <rect key="frame" x="320" y="315" width="99" height="32"/>
                         <buttonCell key="cell" type="push" title="Change..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qp6-R6-Y5V">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -173,7 +174,7 @@
                         </connections>
                     </colorWell>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N77-TC-Udh">
-                        <rect key="frame" x="107" y="189" width="77" height="17"/>
+                        <rect key="frame" x="107" y="188" width="77" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Session list:" id="hkF-KE-SW7">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -225,25 +226,66 @@
                             <action selector="reindexTranscripts:" target="-2" id="mzd-bi-8D2"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lLI-mz-5Eb">
+                        <rect key="frame" x="80" y="252" width="104" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Database folder:" id="q8x-EA-OOp">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CX7-K3-doJ">
+                        <rect key="frame" x="188" y="252" width="99" height="14"/>
+                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="/path/to/database" id="6T3-nZ-Vsp">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qlt-Y7-Lo8">
+                        <rect key="frame" x="320" y="216" width="99" height="32"/>
+                        <buttonCell key="cell" type="push" title="Change..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="q74-uP-SG8">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="changeDatabaseFolder:" target="-2" id="5yX-sj-JSY"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OIo-lT-05c">
+                        <rect key="frame" x="184" y="216" width="136" height="32"/>
+                        <buttonCell key="cell" type="push" title="Reveal in Finder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="itf-Rb-gdv">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="revealDatabaseInFinder:" target="-2" id="ZYA-zW-pMD"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Rid-bR-2ze" firstAttribute="top" secondItem="GUn-XP-Tsu" secondAttribute="bottom" constant="10" id="0Ul-EA-HhO"/>
                     <constraint firstItem="mMI-q7-dvr" firstAttribute="top" secondItem="dQe-ap-pw0" secondAttribute="bottom" constant="26" id="0ay-5G-zcd"/>
                     <constraint firstItem="yGj-4p-Qs8" firstAttribute="centerY" secondItem="mMI-q7-dvr" secondAttribute="centerY" id="0g6-O8-Yan"/>
+                    <constraint firstItem="OIo-lT-05c" firstAttribute="centerY" secondItem="Qlt-Y7-Lo8" secondAttribute="centerY" id="26o-cK-pVB"/>
                     <constraint firstItem="Yy9-1y-c7m" firstAttribute="top" secondItem="v7F-yu-I4e" secondAttribute="bottom" constant="11" id="6xF-4w-u0b"/>
+                    <constraint firstItem="CX7-K3-doJ" firstAttribute="top" secondItem="0fF-2B-C09" secondAttribute="bottom" constant="20" id="7uw-gE-20V"/>
                     <constraint firstItem="aCW-n2-0qr" firstAttribute="top" secondItem="GUn-XP-Tsu" secondAttribute="bottom" constant="10" id="92c-3Y-zRh"/>
                     <constraint firstItem="rBt-da-KnE" firstAttribute="trailing" secondItem="N77-TC-Udh" secondAttribute="trailing" id="9Nf-HD-Pgt"/>
                     <constraint firstItem="GUn-XP-Tsu" firstAttribute="top" secondItem="v7F-yu-I4e" secondAttribute="bottom" constant="10" id="AG4-LU-pRK"/>
                     <constraint firstItem="0fF-2B-C09" firstAttribute="leading" secondItem="ADy-Xn-vCs" secondAttribute="leading" id="C7C-Lt-UHZ"/>
                     <constraint firstItem="GUn-XP-Tsu" firstAttribute="leading" secondItem="Yy9-1y-c7m" secondAttribute="trailing" constant="8" id="CS3-wz-SfX"/>
+                    <constraint firstItem="lLI-mz-5Eb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Clu-zD-yI7"/>
                     <constraint firstItem="rBt-da-KnE" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="EZY-XC-T5t"/>
                     <constraint firstItem="dbV-Vc-Tsf" firstAttribute="top" secondItem="dNy-TJ-Tq9" secondAttribute="bottom" constant="3" id="Eji-Lc-8lB"/>
                     <constraint firstItem="pcR-R1-B9x" firstAttribute="top" secondItem="iYN-Yq-tAu" secondAttribute="bottom" constant="8" id="F0X-8Z-bIl"/>
+                    <constraint firstItem="dNy-TJ-Tq9" firstAttribute="top" secondItem="OIo-lT-05c" secondAttribute="bottom" constant="20" id="Fek-2o-aj1"/>
                     <constraint firstItem="mMI-q7-dvr" firstAttribute="trailing" secondItem="dQe-ap-pw0" secondAttribute="trailing" id="HKD-di-uuu"/>
                     <constraint firstItem="dQe-ap-pw0" firstAttribute="top" secondItem="GUn-XP-Tsu" secondAttribute="bottom" constant="13" id="HM4-6Z-B97"/>
                     <constraint firstItem="dNy-TJ-Tq9" firstAttribute="leading" secondItem="dbV-Vc-Tsf" secondAttribute="leading" constant="-19" id="IZp-bb-cEt"/>
                     <constraint firstItem="v7F-yu-I4e" firstAttribute="leading" secondItem="xPt-Mi-x02" secondAttribute="trailing" constant="8" id="J5R-2W-8Fk"/>
                     <constraint firstItem="ADy-Xn-vCs" firstAttribute="top" secondItem="iYN-Yq-tAu" secondAttribute="bottom" constant="8" id="P8u-cX-r6i"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CX7-K3-doJ" secondAttribute="trailing" constant="20" id="Pp4-8q-gvJ"/>
                     <constraint firstItem="aCW-n2-0qr" firstAttribute="leading" secondItem="Rid-bR-2ze" secondAttribute="trailing" constant="3" id="RW3-LJ-9hP"/>
                     <constraint firstItem="iYN-Yq-tAu" firstAttribute="leading" secondItem="ADy-Xn-vCs" secondAttribute="leading" id="SHx-4A-S8L"/>
                     <constraint firstItem="dNy-TJ-Tq9" firstAttribute="leading" secondItem="N77-TC-Udh" secondAttribute="trailing" constant="8" id="TUk-a4-rfB"/>
@@ -251,16 +293,21 @@
                     <constraint firstItem="0fF-2B-C09" firstAttribute="top" secondItem="ADy-Xn-vCs" secondAttribute="bottom" constant="8" id="Wyb-oZ-bCd"/>
                     <constraint firstItem="xPt-Mi-x02" firstAttribute="top" secondItem="dbV-Vc-Tsf" secondAttribute="bottom" constant="25" id="Y5S-oi-gRW"/>
                     <constraint firstItem="iYN-Yq-tAu" firstAttribute="leading" secondItem="rBt-da-KnE" secondAttribute="trailing" constant="8" id="YvG-6b-yhX"/>
-                    <constraint firstItem="N77-TC-Udh" firstAttribute="top" secondItem="0fF-2B-C09" secondAttribute="bottom" constant="25" id="ZVP-6b-3d1"/>
-                    <constraint firstItem="dNy-TJ-Tq9" firstAttribute="top" secondItem="0fF-2B-C09" secondAttribute="bottom" constant="28" id="awh-YA-Mjc"/>
                     <constraint firstItem="xPt-Mi-x02" firstAttribute="trailing" secondItem="Yy9-1y-c7m" secondAttribute="trailing" id="b9y-LT-PFN"/>
                     <constraint firstItem="Rid-bR-2ze" firstAttribute="leading" secondItem="dQe-ap-pw0" secondAttribute="trailing" constant="8" id="bLv-Yn-6cK"/>
                     <constraint firstItem="Yy9-1y-c7m" firstAttribute="trailing" secondItem="dQe-ap-pw0" secondAttribute="trailing" id="bYO-Et-Ne0"/>
                     <constraint firstItem="pcR-R1-B9x" firstAttribute="leading" secondItem="ADy-Xn-vCs" secondAttribute="trailing" constant="12" id="bvN-bP-yP2"/>
+                    <constraint firstItem="CX7-K3-doJ" firstAttribute="leading" secondItem="lLI-mz-5Eb" secondAttribute="trailing" constant="8" id="c0z-Lj-2nQ"/>
                     <constraint firstItem="rBt-da-KnE" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="dtJ-n4-7Wy"/>
                     <constraint firstItem="yGj-4p-Qs8" firstAttribute="leading" secondItem="mMI-q7-dvr" secondAttribute="trailing" constant="8" id="e2r-KP-Lzc"/>
+                    <constraint firstItem="OIo-lT-05c" firstAttribute="leading" secondItem="CX7-K3-doJ" secondAttribute="leading" id="eUf-jH-2PI"/>
+                    <constraint firstItem="CX7-K3-doJ" firstAttribute="leading" secondItem="0fF-2B-C09" secondAttribute="leading" id="inQ-3W-Zb8"/>
                     <constraint firstItem="iYN-Yq-tAu" firstAttribute="baseline" secondItem="rBt-da-KnE" secondAttribute="baseline" constant="-1" id="j5m-eB-zzH"/>
+                    <constraint firstItem="OIo-lT-05c" firstAttribute="top" secondItem="CX7-K3-doJ" secondAttribute="bottom" constant="8" id="kgf-F4-lY6"/>
+                    <constraint firstItem="lLI-mz-5Eb" firstAttribute="top" secondItem="0fF-2B-C09" secondAttribute="bottom" constant="17" id="mJV-sw-J2Q"/>
                     <constraint firstItem="xPt-Mi-x02" firstAttribute="trailing" secondItem="N77-TC-Udh" secondAttribute="trailing" id="msI-JN-Vah"/>
+                    <constraint firstItem="Qlt-Y7-Lo8" firstAttribute="leading" secondItem="OIo-lT-05c" secondAttribute="trailing" constant="12" id="n4Y-sb-i5E"/>
+                    <constraint firstItem="N77-TC-Udh" firstAttribute="baseline" secondItem="dNy-TJ-Tq9" secondAttribute="baseline" id="nrd-cz-urZ"/>
                     <constraint firstItem="x9Y-G7-rXR" firstAttribute="leading" secondItem="yGj-4p-Qs8" secondAttribute="trailing" constant="8" id="sCg-pB-nmo"/>
                     <constraint firstItem="x9Y-G7-rXR" firstAttribute="centerY" secondItem="yGj-4p-Qs8" secondAttribute="centerY" id="x4S-Fv-3dH"/>
                 </constraints>
@@ -273,7 +320,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-244" y="197"/>
+            <point key="canvasLocation" x="-244" y="224.5"/>
         </window>
     </objects>
 </document>
